@@ -15,13 +15,13 @@ import { settingCoinObject } from "../functions/settingCoinObject";
 function Compare() {
   const [allCoins, setAllCoins] = useState([]);
   const [loading, setLoading] = useState(false);
-  // id states
+ 
   const [crypto1, setCrypto1] = useState("bitcoin");
   const [crypto2, setCrypto2] = useState("ethereum");
-  // data states
+  
   const [coin1Data, setCoin1Data] = useState({});
   const [coin2Data, setCoin2Data] = useState({});
-  // days state
+
   const [days, setDays] = useState(30);
   const [priceType, setPriceType] = useState("prices");
   const [chartData, setChartData] = useState({
@@ -43,7 +43,7 @@ function Compare() {
       settingCoinObject(data1, setCoin1Data);
       settingCoinObject(data2, setCoin2Data);
       if (data1 && data2) {
-        // getPrices
+    
         const prices1 = await getPrices(crypto1, days, priceType);
         const prices2 = await getPrices(crypto2, days, priceType);
         settingChartData(setChartData, prices1, prices2);
@@ -56,23 +56,23 @@ function Compare() {
     setLoading(true);
     if (isCoin2) {
       const newCrypto2 = e.target.value;
-      // crypto2 is being changed
+      
       setCrypto2(newCrypto2);
-      // fetch coin2 data
+      
       const data2 = await getCoinData(newCrypto2);
       settingCoinObject(data2, setCoin2Data);
-      // fetch prices again
+      
       const prices1 = await getPrices(crypto1, days, priceType);
       const prices2 = await getPrices(newCrypto2, days, priceType);
       settingChartData(setChartData, prices1, prices2);
     } else {
       const newCrypto1 = e.target.value;
-      // crypto1 is being changed
+      
       setCrypto1(newCrypto1);
-      // fetch coin1 data
+      
       const data1 = await getCoinData(newCrypto1);
       settingCoinObject(data1, setCoin1Data);
-      // fetch coin prices
+      
       const prices1 = await getPrices(newCrypto1, days, priceType);
       const prices2 = await getPrices(crypto2, days, priceType);
       settingChartData(setChartData, prices1, prices2);

@@ -17,7 +17,7 @@ function Dashboard() {
   const [paginatedCoins, setPaginatedCoins] = useState([]);
 
   useEffect(() => {
-    // Get 100 Coins
+    
     getData();
   }, []);
 
@@ -43,14 +43,7 @@ function Dashboard() {
     console.log(e.target.value);
   };
 
-  // var filteredCoins = coins.filter((coin) => {
-  //   if (
-  //     coin.name.toLowerCase().includes(search.trim().toLowerCase()) ||
-  //     coin.symbol.toLowerCase().includes(search.trim().toLowerCase())
-  //   ) {
-  //     return coin;
-  //   }
-  // });
+
 
   var filteredCoins = coins.filter(
     (coin) =>
@@ -60,7 +53,7 @@ function Dashboard() {
 
   const handlePageChange = (event, value) => {
     setPage(value);
-    // Value = new page number
+    
     var initialCount = (value - 1) * 10;
     setPaginatedCoins(coins.slice(initialCount, initialCount + 10));
   };
@@ -93,14 +86,4 @@ function Dashboard() {
 
 export default Dashboard;
 
-// coins == 100 coins
 
-// PaginatedCoins -> Page 1 - coins.slice(0,10)
-// PaginatedCoins -> Page 2 = coins.slice(10,20)
-// PaginatedCoins -> Page 3 = coins.slice(20,30)
-// .
-// .
-// PaginatedCoins -> Page 10 = coins.slice(90,100)
-
-// PaginatedCoins -> Page X , then initial Count = (X-1)*10
-// coins.slice(initialCount,initialCount+10)
